@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessageBox</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="page">
+        <h1><a href="{{ url_for('index') }}">MessageBox</a></h1>
+        <div class=metanav>
+            {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('login') }}">LogIn</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">LogOut</a>
+            {% endif %}
+        </div>
+        {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+        {% endfor %}
+
+        <h2>LogIn</h2>
+        {% if error %}<p class=error><strong>Error:</strong> {{ error }}</p>{% endif %}
+        <form action="{{ url_for('login') }}" method="post">
+            <div>Email:</div>
+            <input type="email" name="email">
+            <div>Password:</div>
+            <input type="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+
+</html>
