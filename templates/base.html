@@ -1,13 +1,11 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MessageBOX</title>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for("static", filename="style.css") }}">
 </head>
-
 <body>
     <div class="page">
         <h1><a href="{{ url_for('index') }}">MessageBOX</a></h1>
@@ -21,20 +19,9 @@
         </div>
         {% for message in get_flashed_messages() %}
         <div class=flash>{{ message }}</div>
-        {% endfor %} -->
-{% extends 'base.html' %}
-{% block content %}
-<h2>Register</h2>
-<form action="{{ url_for('register') }}" method="post">
-    <div>Username:</div>
-    <div><input type="text" name="name"></div>
-    <div>Password:</div>
-    <div><input type="password" name="password"></div>
-    <div>Email:</div>
-    <div><input type="email" name="email"></div>
-    <input type="submit" value="Join">
-</form>
-<!-- </div>
+        {% endfor %}
+
+        {% block content %}{% endblock %}
+    </div>
 </body>
-</html> -->
-{% endblock %}
+</html>
